@@ -1,0 +1,76 @@
+/* General Settings */
+html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #0e0e0e;
+    color: #f1f1f1;
+  }
+  
+  /* Primary Color */
+  .bg-primary {
+    background-color: #1e90ff !important;
+  }
+  .text-primary {
+    color: #1e90ff !important;
+  }
+  .btn-primary {
+    background-color: #1e90ff !important;
+    border-color: #1e90ff !important;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #3399ff !important;
+    border-color: #3399ff !important;
+  }
+  
+  /* Section Backgrounds */
+  section {
+    background-color: #1c1c1c;
+    padding: 60px 0;
+  }
+  
+  /* Cards */
+  .card {
+    background-color: #2a2a2a;
+    border: none;
+    color: #f1f1f1;
+  }
+  .card-title {
+    color: #1e90ff;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #0e0e0e !important;
+  }
+  .navbar .nav-link {
+    color: #f1f1f1 !important;
+  }
+  .navbar .nav-link:hover,
+  .navbar .nav-link.active {
+    color: #1e90ff !important;
+  }
+  
+  /* Apply Urbanist to all headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 700;
+  }
+  
+  /* Optional: Lighter style for subheaders */
+  .lead {
+    font-weight: 300;
+  }
+
+  #contact {
+    color: #aaa;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #0e0e0e;
+    color: #aaa;
+  }
+  
