@@ -29,7 +29,7 @@ body {
   
   /* ========== Hero / Home Section ========== */
   .home-section {
-    background-image: url('images/hero.jpg'); /* Replace with your image path */
+    background-image: url('car.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
