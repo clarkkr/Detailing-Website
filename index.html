@@ -1,121 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crystal Clean Mobile Detailing</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Urbanist:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- Your Custom Styles -->
-  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563EB', // refined blue
+            secondary: '#1F2937', // refined dark gray
+            accent: '#60A5FA', // lighter blue accent
+            neutral: '#9CA3AF' // soft gray
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-secondary text-white">
 
-<!-- Navbar -->
-<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top bg-transparent py-3">
-    <div class="container">
-      <div class="bg-primary rounded-pill px-4 py-2 w-100 d-flex align-items-center justify-content-between shadow">
-        <a class="navbar-brand text-white fw-bold" href="#home">Crystal Clean</a>
-        <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto d-flex flex-lg-row flex-column align-items-center mb-0">
-            <li class="nav-item border-end border-white pe-3 me-3">
-              <a class="nav-link text-white" href="#home">Home</a>
-            </li>
-            <li class="nav-item border-end border-white pe-3 me-3">
-              <a class="nav-link text-white" href="#about">About</a>
-            </li>
-            <li class="nav-item border-end border-white pe-3 me-3">
-              <a class="nav-link text-white" href="#services">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 bg-primary rounded-b-2xl shadow-lg z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="text-xl font-bold text-white">Crystal Clean</a>
+      <div class="space-x-6 hidden md:flex">
+        <a href="#home" class="hover:text-accent border-r border-accent pr-4">Home</a>
+        <a href="#about" class="hover:text-accent border-r border-accent pr-4">About</a>
+        <a href="#services" class="hover:text-accent border-r border-accent pr-4">Services</a>
+        <a href="#contact" class="hover:text-accent">Contact</a>
       </div>
     </div>
   </nav>
-    
 
-  <!-- Home / Hero Section -->
-  <section id="home" class="home-section text-center d-flex align-items-center">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Crystal Clean Mobile Detailing</h1>
-      <p class="lead">We bring the shine to your driveway.</p>
-      <a href="#contact" class="btn btn-primary btn-lg mt-3">Book an Appointment</a>
+  <!-- Hero -->
+  <section
+  id="home"
+  class="h-screen flex items-center justify-center text-center px-4 bg-cover bg-center relative"
+  style="background-image: url(car.jpg);"  <!-- Update this to your image path -->
+>
+  <!-- Optional Dark Overlay -->
+  <div class="absolute inset-0 bg-black opacity-40"></div>
+  <div class="relative z-10">
+    <h1 class="text-4xl md:text-6xl font-bold text-primary mb-4">Crystal Clean Mobile Detailing</h1>
+    <p class="text-lg md:text-xl text-neutral mb-6">We bring the shine to your driveway.</p>
+    <a href="#contact" class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-xl text-lg font-semibold">
+      Book an Appointment
+    </a>
+  </div>
+</section>
+
+
+
+  <!-- About Section -->
+  <section id="about" class="py-16 px-4 bg-gray-800">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary mb-6">About Us</h2>
+      <p class="text-neutral">At Crystal Clean, we’re passionate about perfection. Our mobile detailing services are designed to give your car the attention it deserves — inside and out. Whether it's a simple hand wash or a full ceramic coat, we treat every vehicle like our own.</p>
     </div>
   </section>
 
-  <!-- About Us Section -->
-  <section id="about">
-    <div class="container text-center">
-      <h2 class="text-primary mb-4">About Us</h2>
-      <p class="lead">At Crystal Clean, we’re passionate about perfection. Our mobile detailing services are designed to give your car the attention it deserves — inside and out. Whether it's a simple hand wash or a full ceramic coat, we treat every vehicle like our own.</p>
-    </div>
-  </section>
-
-  <!-- Services Preview Section -->
-  <section id="services">
-    <div class="container text-center">
-      <h2 class="text-primary mb-4">Our Services</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Exterior Wash</h5>
-              <p class="card-text">Hand wash, wax, and tire shine for that just-detailed look.</p>
-              <a href="exterior-wash.html" class="btn btn-outline-primary">Learn More</a>
-            </div>
-          </div>
+  <!-- Services Section -->
+  <section id="services" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary mb-10">Our Services</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+          <h3 class="text-xl font-semibold mb-2 text-white">Exterior Wash</h3>
+          <p class="text-neutral mb-4">Hand wash, wax, and tire shine for that just-detailed look.</p>
+          <a href="exterior-wash.html" class="text-primary hover:underline">Learn More</a>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Interior Detail</h5>
-              <p class="card-text">Thorough cleaning of seats, carpets, dashboard and more.</p>
-              <a href="complete.html" class="btn btn-outline-primary">Learn More</a>
-            </div>
-          </div>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+          <h3 class="text-xl font-semibold mb-2 text-white">Interior Detail</h3>
+          <p class="text-neutral mb-4">Thorough cleaning of seats, carpets, dashboard and more.</p>
+          <a href="interior-detail.html" class="text-primary hover:underline">Learn More</a>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Ceramic Coating</h5>
-              <p class="card-text">Long-lasting protection and gloss for your vehicle’s paint.</p>
-              <a href="ceramic-coating.html" class="btn btn-outline-primary">Learn More</a>
-            </div>
-          </div>
+        <div class="bg-gray-800 p-6 rounded-xl shadow-md">
+          <h3 class="text-xl font-semibold mb-2 text-white">Ceramic Coating</h3>
+          <p class="text-neutral mb-4">Long-lasting protection and gloss for your vehicle’s paint.</p>
+          <a href="ceramic-coating.html" class="text-primary hover:underline">Learn More</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact">
-    <div class="container text-center">
-      <h2 class="text-primary mb-4">Contact / Book</h2>
-      <p class="lead">📞 Call or text us: <a href="tel:+1234567890">123-456-7890</a></p>
-      <p class="lead">📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+  <section id="contact" class="py-16 px-4 bg-gray-800">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-primary mb-6">Contact / Book</h2>
+      <p class="mb-2">📞 <a href="tel:+1234567890" class="text-primary hover:underline">123-456-7890</a></p>
+      <p>📧 <a href="mailto:youremail@example.com" class="text-primary hover:underline">youremail@example.com</a></p>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <div class="container">
-      <small>&copy; 2025 Crystal Clean Mobile Detailing. All rights reserved.</small>
-    </div>
+  <footer class="bg-secondary text-neutral text-center py-4">
+    <p>&copy; 2025 Crystal Clean Mobile Detailing. All rights reserved.</p>
   </footer>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
