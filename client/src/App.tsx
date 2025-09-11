@@ -3,7 +3,7 @@ import { Home } from "./Pages/Home";
 import { Contact } from "./Pages/Contact";
 import { Services } from "./Pages/Services";
 import { Login } from "./Pages/Login";
-
+import { Gallery } from "./Pages/Gallery";
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +12,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </BrowserRouter>
   );
