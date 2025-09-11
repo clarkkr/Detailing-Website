@@ -1,3 +1,10 @@
+import Navbar from "../Components/Navbar";
+
 export const Gallery = () => {
-  return <div>Gallery page</div>;
+  return (
+    <div>
+      <Navbar />
+      Gallery page
+    </div>
+  );
 };

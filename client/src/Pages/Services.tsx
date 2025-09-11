@@ -1,3 +1,10 @@
+import Navbar from "../Components/Navbar";
+
 export const Services = () => {
-  return <div>Services page</div>;
+  return (
+    <div>
+      <Navbar />
+      Services page
+    </div>
+  );
 };

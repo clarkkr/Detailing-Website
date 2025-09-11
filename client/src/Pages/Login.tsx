@@ -1,3 +1,10 @@
+import Navbar from "../Components/Navbar";
+
 export const Login = () => {
-  return <div>Login page</div>;
+  return (
+    <div>
+      <Navbar />
+      Login page
+    </div>
+  );
 };
