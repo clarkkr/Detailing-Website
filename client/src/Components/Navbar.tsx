@@ -5,6 +5,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul>
+        <span>Korynthian Detailing</span>
         <li>
           <Link to="/">Home</Link>
         </li>
