@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+/* Icons */
 import { FaBars, FaTimes } from "react-icons/fa";
 import { FaMoon, FaSun } from "react-icons/fa";
 
@@ -29,14 +30,14 @@ function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[var(--color-bg)] text-[var(--color-text)] backdrop-blur-md shadow-md z-50 transition-colors">
+    <nav className="fixed top-0 left-0 w-full bg-[var(--color-bg)] backdrop-blur-md shadow-md z-50 transition-colors">
       <div className="flex justify-between items-center max-w-6xl mx-auto px-6 py-3">
         {/* Logo / Brand */}
         <Link
           to="/"
           className="text-2xl font-extrabold tracking-tight text-[var(--color-primary)]"
         >
-          Korynthian Detailing
+          Insert Name Here
         </Link>
 
         {/* Desktop Menu */}
@@ -49,7 +50,7 @@ function Navbar() {
                 ${
                   location.pathname === link.to
                     ? "text-[var(--color-primary)] font-semibold"
-                    : ""
+                    : "text-[var(--color-text)]"
                 }`}
               >
                 {/* Underline Animation */}

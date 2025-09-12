@@ -6,15 +6,17 @@ import { Login } from "./Pages/Login";
 import { Gallery } from "./Pages/Gallery";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="min-h-screen pt-20 px-4">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/gallery" element={<Gallery />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;
