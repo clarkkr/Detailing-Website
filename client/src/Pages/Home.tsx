@@ -1,7 +1,7 @@
 import Navbar from "../Components/Navbar";
 export const Home = () => {
   return (
-    <div className=" min-h-screen overflow-x-hidden text-foreground">
+    <div>
       <Navbar />
       Home Page
     </div>

@@ -1,117 +1,316 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-/* Icons */
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaSun, FaMoon, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(
-    () => localStorage.getItem("theme") === "dark"
-  );
-  const location = useLocation();
+const Navbar = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "/contact", label: "Contact" },
-    { to: "/login", label: "Login" },
-    { to: "/gallery", label: "Gallery" },
-    { to: "/services", label: "Services" },
-  ];
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    document.documentElement.classList.toggle("dark");
+  };
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-[var(--color-bg)] backdrop-blur-md shadow-md z-50 transition-colors">
-      <div className="flex justify-between items-center max-w-6xl mx-auto px-6 py-3">
-        {/* Logo / Brand */}
+    <nav className="flex items-center justify-between px-6 py-3 border-b border-gray-200 dark:border-gray-700 bg-[var(--color-card)] text-[var(--color-text)] relative transition-colors">
+      {/* Left: Company Name */}
+      <div className="text-xl font-bold">
         <Link
           to="/"
-          className="text-2xl font-extrabold tracking-tight text-[var(--color-primary)]"
+          className="hover:text-[var(--color-primary)] transition-colors"
         >
-          Insert Name Here
+          My Detailing Co.
         </Link>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          {links.map((link) => (
-            <li key={link.to}>
-              <Link
-                to={link.to}
-                className={`relative px-2 py-1 hover:text-[var(--color-primary)] transition 
-                ${
-                  location.pathname === link.to
-                    ? "text-[var(--color-primary)] font-semibold"
-                    : "text-[var(--color-text)]"
-                }`}
-              >
-                {/* Underline Animation */}
-                <span
-                  className={`absolute left-0 bottom-0 w-full h-0.5 bg-[var(--color-secondary)] scale-x-0 origin-left transition-transform duration-300 
-                    ${
-                      location.pathname === link.to
-                        ? "scale-x-100"
-                        : "hover:scale-x-100"
-                    }`}
-                />
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Right side buttons */}
-        <div className="flex items-center space-x-4">
-          {/* Theme Toggle */}
-          <button
-            className="p-2 rounded-full bg-[var(--color-secondary)] text-white hover:opacity-80 transition"
-            onClick={() => setDarkMode(!darkMode)}
-            aria-label="Toggle Dark Mode"
-          >
-            {darkMode ? <FaSun /> : <FaMoon />}
-          </button>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <ul className="md:hidden bg-[var(--color-bg)] text-[var(--color-text)] shadow-md flex flex-col space-y-3 p-4 text-center">
-          {links.map((link) => (
-            <li key={link.to}>
-              <Link
-                to={link.to}
-                className={`block py-2 rounded-lg transition 
-                ${
-                  location.pathname === link.to
-                    ? "bg-[var(--color-secondary)] text-white font-semibold"
-                    : "hover:bg-gray-100 dark:hover:bg-gray-800"
-                }`}
-                onClick={() => setMenuOpen(false)}
+      {/* Middle: Nav Links (Desktop) */}
+      <ul className="hidden md:flex space-x-8">
+        <li>
+          <Link
+            to="/"
+            className="hover:text-[var(--color-primary)] transition-colors"
+          >
+            Home
+          </Link>
+        </li>
+        <li className="relative">
+          <button
+            onClick={() => setIsServicesOpen(!isServicesOpen)}
+            className="flex items-center space-x-1 focus:outline-none hover:text-[var(--color-primary)] transition-colors"
+          >
+            <span>Services</span>
+            <FaChevronDown
+              className={`transition-transform ${
+                isServicesOpen ? "rotate-180" : "rotate-0"
+              }`}
+            />
+          </button>
+          <AnimatePresence>
+            {isServicesOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute left-0 mt-2 w-[600px] grid grid-cols-3 gap-6 p-4 bg-[var(--color-card)] rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700"
               >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+                <div>
+                  <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                    Interior
+                  </h4>
+                  <ul className="space-y-1">
+                    <li>
+                      <Link
+                        to="/services/interior/basic"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Basic Interior
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/services/interior/premium"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Premium Interior
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                    Exterior
+                  </h4>
+                  <ul className="space-y-1">
+                    <li>
+                      <Link
+                        to="/services/exterior/basic"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Basic Exterior
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/services/exterior/premium"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Premium Exterior
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                    Combined
+                  </h4>
+                  <ul className="space-y-1">
+                    <li>
+                      <Link
+                        to="/services/combined/basic"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Full Basic
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/services/combined/premium"
+                        className="hover:text-[var(--color-primary)]"
+                      >
+                        Full Premium
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </li>
+        <li>
+          <Link
+            to="/gallery"
+            className="hover:text-[var(--color-primary)] transition-colors"
+          >
+            Gallery
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/contact"
+            className="hover:text-[var(--color-primary)] transition-colors"
+          >
+            Contact
+          </Link>
+        </li>
+      </ul>
+
+      {/* Right: Buttons (Desktop) */}
+      <div className="hidden md:flex items-center space-x-4">
+        <button className="px-4 py-2 bg-white dark:bg-[var(--color-card)] text-[var(--color-text)] rounded-2xl shadow hover:text-[var(--color-primary)] hover:bg-gray-100 dark:hover:bg-gray-500 transition">
+          Log In
+        </button>
+        <button className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-2xl shadow hover:opacity-90 transition">
+          Book Appointment
+        </button>
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-white dark:bg-[var(--color-card)] text-[var(--color-primary)] hover:bg-gray-100 dark:hover:bg-gray-500 transition"
+        >
+          {isDarkMode ? <FaSun /> : <FaMoon />}
+        </button>
+      </div>
+
+      {/* Mobile Menu Toggle */}
+      <button
+        className="md:hidden p-2 text-[var(--color-text)] hover:text-[var(--color-primary)]"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Mobile Menu Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 w-full bg-[var(--color-card)] flex flex-col space-y-4 p-6 md:hidden border-t border-gray-200 dark:border-gray-700"
+          >
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-[var(--color-primary)]"
+            >
+              Home
+            </Link>
+            <button
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
+              className="flex items-center space-x-1 hover:text-[var(--color-primary)]"
+            >
+              <span>Services</span>
+              <FaChevronDown
+                className={`transition-transform ${
+                  isServicesOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            </button>
+            <AnimatePresence>
+              {isServicesOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="grid grid-cols-1 gap-4 pl-4"
+                >
+                  <div>
+                    <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                      Interior
+                    </h4>
+                    <ul className="space-y-1">
+                      <li>
+                        <Link
+                          to="/services/interior/basic"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Basic Interior
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/services/interior/premium"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Premium Interior
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                      Exterior
+                    </h4>
+                    <ul className="space-y-1">
+                      <li>
+                        <Link
+                          to="/services/exterior/basic"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Basic Exterior
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/services/exterior/premium"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Premium Exterior
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-[var(--color-primary)]">
+                      Combined
+                    </h4>
+                    <ul className="space-y-1">
+                      <li>
+                        <Link
+                          to="/services/combined/basic"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Full Basic
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/services/combined/premium"
+                          className="hover:text-[var(--color-primary)]"
+                        >
+                          Full Premium
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <Link
+              to="/gallery"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-[var(--color-primary)]"
+            >
+              Gallery
+            </Link>
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="hover:text-[var(--color-primary)]"
+            >
+              Contact
+            </Link>
+            <button className="px-4 py-2 bg-white dark:bg-gray-600 text-[var(--color-text)] rounded-2xl shadow hover:text-[var(--color-primary)] hover:bg-gray-100 dark:hover:bg-gray-500">
+              Log In
+            </button>
+            <button className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-2xl shadow hover:opacity-90">
+              Book Appointment
+            </button>
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-white dark:bg-gray-600 text-[var(--color-primary)] hover:bg-gray-100 dark:hover:bg-gray-500 w-fit"
+            >
+              {isDarkMode ? <FaSun /> : <FaMoon />}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
-}
+};
 
 export default Navbar;

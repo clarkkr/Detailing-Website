@@ -6,7 +6,7 @@ import { Login } from "./Pages/Login";
 import { Gallery } from "./Pages/Gallery";
 function App() {
   return (
-    <div className="min-h-screen pt-20 px-4">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

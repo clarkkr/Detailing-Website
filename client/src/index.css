@@ -1,15 +1,24 @@
 @import "tailwindcss";
-
 :root {
-  --color-primary: #4f46e5; /* Indigo 600 */
-  --color-secondary: #7c3aed; /* Violet 600 */
-  --color-bg: #ffffff;
-  --color-text: #1f2937;
+  --color-primary: #2563eb; /* Blue accent */
+  --color-secondary: #7c3aed; /* Violet accent */
+  --color-bg: #ffffff; /* Main background */
+  --color-card: #f9fafb; /* Cards, navbar, dropdowns */
+  --color-text: #1f2937; /* Dark gray text */
+  --color-text-muted: #6b7280;
 }
 
 .dark {
-  --color-primary: #818cf8; /* Lighter indigo for dark mode */
-  --color-secondary: #c084fc; /* Lighter violet for dark mode */
-  --color-bg: #1f2937;
-  --color-text: #f9fafb;
+  --color-primary: #60a5fa; /* Softer blue for dark mode */
+  --color-secondary: #c084fc;
+  --color-bg: #111827; /* Dark background */
+  --color-card: #1f2937; /* Darker card/nav background */
+  --color-text: #f9fafb; /* Light text */
+  --color-text-muted: #9ca3af;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
