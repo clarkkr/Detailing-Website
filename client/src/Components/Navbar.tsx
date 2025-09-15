@@ -123,7 +123,7 @@ const Navbar: React.FC = () => {
 
       {/* Desktop Right Actions */}
       <div className="hidden md:flex items-center space-x-4">
-        <button className="px-4 py-2 bg-[var(--color-bg)] dark:bg-[var(--color-card)] border border-gray-200 dark:border-gray-500 rounded-2xl hover:bg-gray-100 dark:hover:bg-gray-600 transition">
+        <button className="px-4 py-2 bg-[var(--color-bg)] dark:bg-[var(--color-card)] border border-gray-200 dark:border-gray-500 rounded-2xl hover:bg-[var(--color-bg)] dark:hover:bg-[var(--color-bg)] transition">
           Log In
         </button>
         <button className="px-4 py-2 bg-[var(--color-primary)] text-white rounded-2xl hover:opacity-90 transition">

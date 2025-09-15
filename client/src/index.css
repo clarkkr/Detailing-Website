@@ -2,7 +2,7 @@
 :root {
   --color-primary: #2563eb; /* Blue accent */
   --color-secondary: #7c3aed; /* Violet accent */
-  --color-bg: #ffffff; /* Main background */
+  --color-bg: #ffffff6f; /* Main background */
   --color-card: #f9fafb; /* Cards, navbar, dropdowns */
   --color-text: #1f2937; /* Dark gray text */
   --color-text-muted: #6b7280;
