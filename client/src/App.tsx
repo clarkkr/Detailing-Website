@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
-
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Contact from "./Pages/Contact";
@@ -25,6 +25,7 @@ export default function App() {
             <Route path="/login*" element={<Login />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );

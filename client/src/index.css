@@ -6,6 +6,7 @@
   --color-card: #f9fafb; /* Cards, navbar, dropdowns */
   --color-text: #1f2937; /* Dark gray text */
   --color-text-muted: #6b7280;
+  --color-card-border: #e5e7eb;
 }
 
 .dark {
@@ -15,6 +16,7 @@
   --color-card: #1f2937; /* Darker card/nav background */
   --color-text: #f9fafb; /* Light text */
   --color-text-muted: #9ca3af;
+  --color-card-border: #374151;
 }
 
 body {
